@@ -1,0 +1,17 @@
+<aura:component controller="RefreshPageController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+    <!--EMP API component for subscribing to platform event-->
+    <lightning:empApi aura:id="empApi" />
+    <aura:attribute name="channel" type="String" default="/event/Refresh_Page__e"/>
+    <aura:attribute name="subscription" type="Map"/>
+
+    <aura:attribute name="recordId" type="String"/>
+
+    <!--Subscribes to channel on initial load of component-->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+
+    <!--Displays message after subscription successful-->
+    <aura:registerEvent name="toastEvent" type="force:showToast"/>
+
+    <!--Button to publish event-->
+    <lightning:button variant="brand" label="Publish Event" title="Publish Event" onclick="{!c.publish}"></lightning:button>
+</aura:component>
